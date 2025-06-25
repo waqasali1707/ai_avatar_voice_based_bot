@@ -96,14 +96,14 @@ export default function Avatar(props) {
         const mouthCue = lipsync.mouthCues[i];
         if (currentAudioTime >= mouthCue.start && currentAudioTime <= mouthCue.end) {
           appliedMorphTargets.push(visemesMapping[mouthCue.value]);
-          lerpMorphTarget(visemesMapping[mouthCue.value], 1, 0.1);
+          lerpMorphTarget(visemesMapping[mouthCue.value], 1, 0.4);
           break;
         }
       }
     } else if (message && audio) {
       // simple fallback: animate mouth open/close with a sine wave
       const amp = (Math.sin(audio.currentTime * 6) + 1) / 2; // 3 cycles per second
-      lerpMorphTarget("mouthOpen", amp, 0.1);
+      lerpMorphTarget("mouthOpen", amp, 0.4);
     }
 
     Object.values(visemesMapping).forEach((value) => {
